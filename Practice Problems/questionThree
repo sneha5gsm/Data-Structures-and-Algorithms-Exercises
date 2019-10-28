@@ -1,0 +1,50 @@
+import operator
+inputFile = open('inputFile', 'r')
+outputFile = open('outputFile', 'w+')
+testCases = int(inputFile.readline())
+for t in range(0, testCases):
+    z = inputFile.readline()
+    if z[len(z)-1] == '\n':
+        z = z[: len(z) - 1]
+    n = int(z)
+    print(n)
+    array = dict()
+    for i in range(0, n):
+        z = inputFile.readline()
+        if z[len(z) - 1] == '\n':
+            z = z[: len(z) - 1]
+        line = map(int, z.split(' '))
+        print('line')
+        print(line)
+        array[i] = []
+        a = []
+        for j in range(0, n):
+            if line[j] == 1:
+                a.append(j)
+        array[i] = a
+    print(array)
+    sortedArray = sorted(array, key=lambda k: len(array[k]))
+    print(sortedArray)
+    flag = 0
+    sticks = 0
+    while flag ==0:
+        c =9999999999
+        r = -1
+        for x in array[sortedArray[0]]:
+            if len(array[x]) < c:
+                r = x
+        count = count + 1
+        del array[sortedArray[0]]
+        del array[r]
+        if len(array) == 0:
+            flag = 1
+        else:
+            sortedArray = sorted(array, key=lambda k: len(array[k]))
+
+
+
+
+
+
+
+

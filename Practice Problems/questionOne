@@ -1,0 +1,48 @@
+inputFile = open('', 'r')
+outputFile = open('', 'w+')
+testCases = int(inputFile.readline())
+print(testCases)
+
+for t in range(1, testCases):
+    numberOfPlanets = int(inputFile.readline())
+    print('number of planets')
+    print(numberOfPlanets)
+    a = []
+    b = []
+    for j in range(1, numberOfPlanets):
+        connection = map(int, inputFile.readline().split(','))
+        a[connection[0]][connection[1]] = 1
+        a[connection[1]][connection[0]] = 1
+        b[connection[0]] = b[connection[0]] + 1
+        b[connection[1]] = b[connection[1]] + 1
+    print('array connections')
+    print(a)
+    print(b)
+    cycle = []
+    flag = 0
+    for i in range(1, numberOfPlanets):
+        if b[i] == 2 and flag == 0:
+            cycle[i] = 1
+            for j in range(1, len(a[i])):
+                if b[a[i][j]] == 2:
+                    cycle[b[a[i][j]]] = 1
+                    if j == len(a[i]):
+                        flag = 1
+                else:
+                    cycle = []
+                    break
+        if flag == 1:
+            break
+    print('cycle')
+    print(cycle)
+    fileLine = 'Case #' + str(t+1)
+    for i in range(1, numberOfPlanets):
+        if cycle[i] == 1:
+            fileLine = fileLine + 0 + ' '
+        else:
+
+
+
+
+
+
